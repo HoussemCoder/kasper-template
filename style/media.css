@@ -1,0 +1,73 @@
+/* small screen */
+@media (min-width: 768px){
+    .container{
+        max-width: 750px;
+    }
+    header nav .burger-menu{
+        display: none;
+    }
+    .portfolio-section .projects .proj{
+        flex-basis: 50%;
+    }
+}
+
+/* medium screen */
+@media (min-width: 992px){
+    .container{
+        max-width: 970px;
+    }
+}
+
+/* large screen */
+@media (min-width: 1200px){
+    .container{
+        max-width: 1170px;
+    }
+    .portfolio-section .projects .proj{
+        flex-basis: 25%;
+    }
+}
+
+/* other media */
+
+@media (max-width: 767px){
+    header ul{
+        display: none;
+    }
+    header nav .burger-menu:hover + ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 50%);
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+    header nav .burger-menu:hover + ul a{
+        padding: 15px;
+        color: var(--bg-c-w);
+    }
+    header nav .burger-menu:hover + ul .active{
+        color: var(--main-c);
+    }
+    .landing .all-text{
+        width: 100%;
+    }
+    .landing .all-text .content{
+        max-width: 100%;
+    }
+    .landing .arrow{
+        display: none;
+    }
+    .services-content .serv{
+        flex-direction: column;
+        text-align: center;
+    }
+    .services-content .serv i{
+        margin: 0 0 30px;
+    }
+    .features-section .pict{
+        display: none;
+    }
+}
+

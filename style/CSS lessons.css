@@ -1,0 +1,204 @@
+/*
+ CSS units:
+px
+1 em => 1 time of the futher size
+1 rem => 1 time of the root size (means <html> itself)
+%
+1 vw => 1% of the width of the whole page-window
+font: style weight size/line-height family
+the white-space + overflow + text-overflow = "..." at the end of trancated text
+box-shadow: H shadow | V shadow | blur | spread | color | inset(outset by default) 
+box-sizing: border-box | content-box(by default)
+data-text(or whatever) ==> ::after(or before) + content: attr(data-text);
+counter-increament: name; ==> ::after(or before) content: counter(name);
+==> in order to use it for all your elements you can write the following:
+      *{box-sizing: border-box}
+transition: property duration delay timing-function
+ex: padding: 20px !important; to override this styling on all other simillar styles.
+margin collapse:
+  - only vertical marging collapse
+  - biggest margin win
+  - margin collapse with elements that nothing existing between (ex: <hr>)
+  - nesting doesn't prevent collapsing
+CSS Variables: (ex:)
+  :root{
+    --mainColor: green;
+    --mainWidth: 400px;  
+  }
+  var(varName, fallBack Value) ==> if varName doesn't work the fallback value will take its place by default
+  (in order to use it)
+  .main{
+    color = white;
+    background-color: var(--mainColor, bleu);
+    width: var(mainWidth);
+  }
+************
+****flex****:
+************
+=== flex parent styles ===
+  flex-flow: flex-direction flex-wrap; 
+  justify-content + align-items = best practice for centering anything inside the parent box;
+  align-content: unlike align-item which deal with single item horizontely, this one deal with the entire block of items at once verticaly but it works only with wrap;
+=== flex child styles ===
+  flex-grow; flex-shrink; order
+  flex-basis: great & intelegent idea (you can ignore using the width);
+  flex: flex-grow[0] flex-shrink[1] flex-basis[0%];
+=============
+=============
+*filter: blur(px) or grayscale(%) or invert(%) and many more;
+*gradients: background-image: linear-gradient(direction || angle, color stop 1, color stop 2, ...);
+*optional: you can add after each color how much area this color should take from the container.
+*<p contenteditable="true"></p> ==> to make this paragraph editable
+*pointer-event: none; for ex ==> to prevent any action from this link or...
+*caret-color:; to change the color of the pointer in the input fields
++= if you want to use pseudo elements on an input files you should put it in a span tag or any container element.
+************
+****grid****:
+************
+=== grid parent styles ===
+grid-template-columns: px % fr repeat(col num, unit) mix;(*Great style*)
+grid-template-rows: same as -columns;
+grid-template-areas:"name" "name0" "name1"...; and in each tag that represent a row you put: ex: header{grid-area: name;}
+* auto + fr ==> auto will take only the area it needs for showing its content and the rest is taken by the fr.
+row-gap|column-gap|gap: px or...; to make spaces between grid boxes.
+=== grid child styles ===
+grid-column|row: num (of starting) / span num(how many); same as span in table style
+grid-area: grid-row-start / grid-column-start / grid row-end / grid-column-end;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); try it (great one!)
+there is also auto-fill, they work with rows too, it's great.
+*****************
+****transform****
+*****************
+***2D***
+transform: scaleX-or-Y-or without-(-/+ num);
+transform: rotate(deg -or rad, grad, turn-);
+transform: translateX-or-Y-or without but must enetr 2 values else it counts it 0-(unit);
+*translate(-50%, -50%) with position top + left: 50% will center objects too.
+transform: skewX-or-Y-or without but must enetr 2 values else it counts it 0-(rotate unit);
+*skew used mostly with the bg of some titles using the pseudo elements to keep the title without skew.
+transform: matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY());
+u can use instead: transform: scaleX() skewY() skewX() scaleY() translateX() translateY();
+but it won't work as matrix() because matix start with translate() fisrt but the 2nd one start with scale()
+==> so u should write: transform: translateX() translateY() scaleX() skewY() skewX() scaleY();
+*note: skew() in matrix accept tan of deg not the deg itself.
+transform-origin: right|left|center|deg top|bottom|center|deg; change the origin point of transform functions(rotate|scale|...)
+***3D***
+transform: rotateX|Y|Z(deg) or rotate3d(X:0|1 Y:0|1 Z:0|1 deg); ==> imagination
+this 3d rotate with transform-origin can make a nice trick (must try) ex: rotateX(90deg) transfrom-origin: right center;
+transform: translateX|Y|Z(unit)|3d(unit, unit, unit);
+- u can use in the parent: prespective: unit; (specify the ur vue point of the child) & prespective-origin: unit; the same as transform-origin
+***flip product***
+first u've a parent box + 2 child with class's names (ex: "face front" "face back").
+use transform-style: preserve-3d; in the parent box to match the transformations with the 3d space.(failed without it)
+use the common class name of children ".face" and write backface-visibility: hidden; when the box flip to the user this property control if he can see the back of the box or not.(important)
+- u can do it also with pseudo elements (I think it's better)
+***************
+***animation***
+***************
+@keyframes label-your-animation{
+  0%{
+    initial-situations:...;
+  }
+  (u can put other situations between based on the % (ex: 0% - 20% -50% -100%))
+  100%{
+    final-situation:...;
+  }
+}
+- and to use it u should write within the element brackets:
+  animation-name: label-your-animation;
+  animation-duration|delay|timing-function: same as transition;
+  animation-fill-mode: to keep the state of the first/last/both keyfarme;
+  animation-play-state: running|paused; (ex: paused animation when hovering)
+  animation-direction: normal|reverse|alternative...; u can see the difference with the loading cercle animation.
+  animation-iteration-count: num|infinite;
+  - shorthand:
+  animation: name duration timing-function delay iteration-count direction;
+***************
+***selectors***
+***************
+  *: all elements
+  element: [p, div, picture,...]
+  element element: div h1
+  .calss-name
+  #id-name
+  .parent .child
+  .calss-one.class-two: div has two classes
+  .calss-one div, .class-two p: grouping
+  element.class-name: target this specific element which has this class-name (to exclude all other different element with the same class-name)
+  .parent > .child: target only the direct child/ren (the most important)
+  element + element: [div + p] every p directly next to a div (not to be its child, just the first next element)
+  element ~ elements: [h1 ~ div] target every div cames after an h1 whitin the same parent only (without including children divs)
+  [attribute]
+  element[attribute]
+  [attribute=value]
+  element[attribute=value] => these types usualy used with the input tags
+  element[attribute~=word]: match every element has this word within its attr value (not a piece of word;ex: div not testdiv;)
+  element[attribute*=string]: match every element has this sting within its attr value (could be a piece of word;ex: div in testdiv;)
+  element[attribute^=string]: match every element its attr value starts with this string
+  
+***advanced selectors***
+
+  element:first-child: match this specific element only if it was the first child of its parent;
+  element:last-child: same as first-child (u can understand)
+  element:first-of-type: the first of its type in its parent
+  element:last-of-type: same as first-of-type (u can understand)
+  * u can mix these selectors to get the desired style
+  element:only-child: means it's the only child in its parent (no siblings)
+  element:only-of-type: same as first-of-type (u can understand)
+  element:not(elment): could be any element or pseudo element or any selector to exclude it from this style
+  element:nth-child(n): n in nth refer to a num, this selector is to select any child u want by putting its num
+          n between() can be num(order)|even|odd|(u should learn about it)
+  elment:nth-last-child(n): starts counting from the last child, so if u wanna get the before-last-child simply put 2 between()
+  element:nth-of-type(n): easy to understand based on the above info
+  element:nth-last-of-type(n): easy to understand based on the above info
+  
+  element:root
+         :checked = ex: input[type="checkbox"]:checked + label{...} target the label came after a checked input of type checkbox (useful)
+         :empty = target every element empty (has no child) could be used with empty cells of a table or something like that
+         :disabled = can do some styling to show that this element is disabled (usualy used with disabled input)
+         :required = ex: input:required + span::before{
+                                                      content:"*";
+                                                      color: red;
+                                                    } (the red star next to a required field; try to understand)
+         ::placeholder = ex to change the color or font styling of the text u put in the input fields
+         ::selection = to change color of text and its bg when select it
+  * to use these for all elements write: ::placeholder or whatever{...}, else u should specify the element:
+                                         element::selection{...}
+  * checked & disabled & required & placeholder must be writen before in the html tags
+
+*******************
+***media queries***
+*******************
+form:
+  @media condition{
+    selector{
+      ...
+    }
+  }
+condition: ex: print = do some styling for printing this page (ctrl+p)
+               (min-width: 1000px) do somthing
+               (min-width: 1000px) and (max-width: 1600px) do somthing
+usualy used to make a responsive pages to match the screen size of mobiles, tablets, laptops...etc
+can be used integred in html head tag = ex:
+  <head>
+    <link rel="stylesheet" href="style/print.css" media="print" />
+    ...
+    </head>
+    or u can put your condition in media attr
+    or within the style tag:
+    <style media="condition">
+      ...
+    </style>
+the best practice (according to some global frameworks) is to put your media directly next to its selector in the css file to be easy to find to make your changes
+
+*******************
+***global values***
+*******************
+  inherit = child takes values from its parent
+  initial = reset the property to its default value (ex: color: initial; not to set black as default; because in that case the initial color is vary based on the browser)
+  unset = if property can be inherit so unset means inherit (ex: color) else it means initial (ex: border)
+  all = ex: element{
+    all: unset;
+  } to go through all properties and make them unset (as explained above)
+  revert [css level 4] = return the property value to the user agent value
+*/
