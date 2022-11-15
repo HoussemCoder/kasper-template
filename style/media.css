@@ -9,12 +9,18 @@
     .portfolio-section .projects .proj{
         flex-basis: 50%;
     }
+    .statistics .container .stat{
+        flex-basis: 50%;
+    }
 }
 
 /* medium screen */
 @media (min-width: 992px){
     .container{
         max-width: 970px;
+    }
+    .statistics .container .stat{
+        flex-basis: 25%;
     }
 }
 
@@ -68,6 +74,10 @@
     }
     .features-section .pict{
         display: none;
+    }
+    .statistics .container .stat{
+        flex-basis: 100%;
+        margin-bottom: 10px;
     }
 }
 
