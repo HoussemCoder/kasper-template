@@ -520,6 +520,140 @@ section::before{
 }
 
 /* end statistics section */
+/* start skills section */
+
+.skills-section .container{
+    display: flex;
+    justify-content: space-between;
+    line-height: 2em;
+}
+.skills-section .testimonials, .skills-section .skills{
+    flex-basis: 45%;
+}
+.skills-section .testimonials h3, .skills-section .skills h3{
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+}
+.skills-section .testimonials > p, .skills-section .skills > p{
+    margin: 30px 0;
+    color: var(--p-c);
+    text-transform: capitalize;
+    text-align: center;
+}
+.skills-section .testim-block{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.skills-section .testim-block img{
+    width: 100px;
+    margin-right: 50px;
+    border-radius: 50%;
+}
+.skills-section .testim-block .text{    
+    border-bottom: 1px solid var(--p-c);
+}
+.skills-section .testim-block p{
+    text-align: end;
+    color: var(--p-c);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.skills-section .points{
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.skills-section .points li{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--p-c);
+}
+.skills-section .points .active{
+    background-color: var(--main-c);
+    border: 1px solid var(--main-c);
+}
+.skills-section .skills h4{
+    text-transform: uppercase;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 10px 0;
+}
+.skills-section .skills .prog-bar .prog{
+    height: 30px;
+    background-color: #CCC;
+    margin-bottom: 30px;
+}
+.skills-section .skills span{
+    display: inline-block;
+    height: 100%;
+    background-color: var(--main-c);
+    position: relative;
+}
+.skills-section .skills span::before{
+    content: attr(data-progress);
+    width: fit-content;
+    padding: 0 3px;
+    border-radius: 5px;
+    color: var(--bg-c-w);
+    font-size: 1em;
+    font-weight: 400;
+    background-color: black;
+    position: absolute;
+    top: -40px;
+    right: -18px;
+}
+.skills-section .skills span::after{
+    content: "";
+    border: 10px solid transparent;
+    border-top-color: black;
+    position: absolute;
+    top: -12px;
+    right: -10px;
+}
+
+/* end skills section */
+/* start quote section */
+
+.quote-section{
+    background-image: url(../images/quote.jpg);
+    background-size: cover;
+    text-align: center;
+    color: var(--bg-c-w);
+    position: relative;
+}
+.quote-section::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.quote-section .container{
+    position: relative;
+}
+.quote-section q{
+    display: block;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    line-height: 1.4em;
+}
+.quote-section p{
+    font-style: italic;
+}
+/* end quote section */
+
 
 
 

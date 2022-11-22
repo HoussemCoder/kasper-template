@@ -12,6 +12,12 @@
     .statistics .container .stat{
         flex-basis: 50%;
     }
+    .skills-section .container{
+        display: block;
+    }
+    .skills-section .skills{
+        margin-top: 100px;
+    }
 }
 
 /* medium screen */
@@ -22,6 +28,12 @@
     .statistics .container .stat{
         flex-basis: 25%;
     }
+    .skills-section .container{
+        display: flex;
+    }
+    .skills-section .skills{
+        margin-top: 0;
+    }
 }
 
 /* large screen */
@@ -31,6 +43,9 @@
     }
     .portfolio-section .projects .proj{
         flex-basis: 25%;
+    }
+    .skills-section .skills{
+        margin-top: 0;
     }
 }
 
@@ -78,6 +93,20 @@
     .statistics .container .stat{
         flex-basis: 100%;
         margin-bottom: 10px;
+    }
+    .skills-section .container{
+        display: block;
+    }
+    .skills-section .testim-block{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .skills-section img{
+        transform: translateX(25%);
+    }
+    .skills-section .skills{
+        margin-top: 100px;
     }
 }
 
